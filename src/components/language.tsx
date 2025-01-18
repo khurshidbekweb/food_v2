@@ -27,7 +27,7 @@ const LanguageComponent = () => {
         i18n.changeLanguage(lang?.code)
     }
     return (
-        <DropdownMenu>
+        <DropdownMenu >
             <DropdownMenuTrigger><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${language?.image}`} alt="" /></DropdownMenuTrigger>
             <DropdownMenuContent>
                 {languages?.length && languages.map((lang) => (
