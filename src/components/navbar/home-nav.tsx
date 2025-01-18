@@ -8,7 +8,7 @@ const HomeNav = () => {
   const restaurant: Restaurant = useRestuarantOne(restaurentId as string)?.data;
 
   return (
-    <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-4 text-white">
+    <div className="bg-gradient-to-r from-purple-500 top-0 to-pink-500 p-4 text-white">
       <div className="pt-1 pb-2 justify-between">
         <div className="">
           <div className="rounded-full flex items-center pb-8 justify-center">

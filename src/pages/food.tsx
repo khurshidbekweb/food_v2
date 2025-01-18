@@ -1,5 +1,5 @@
 import RowCard from "@/components/card/row-card";
-import Navbar from "@/components/navbar/navbar";
+import HomeNav from "@/components/navbar/home-nav";
 import { useStore } from "@/store";
 import { category, Food, Restaurant } from "@/types";
 import { useEffect } from "react";
@@ -33,10 +33,9 @@ const FoodPage = () => {
     }, [categoryId]);
 
     return (
-        <div className="max-w-md mx-auto md:px-5 mt-2 border overflow-hidden lg:overflow-hidden">
-            <Navbar />
-
-            <div className="px-2 flex flex-col space-y-2 mt-[100px]">
+        <div className="max-w-md mx-auto border overflow-hidden lg:overflow-hidden">
+            <HomeNav />
+            <div className="p-2 w-full flex flex-col md:px-5 space-y-2 mt-[-20px] rounded-t-3xl bg-white">
                 {viewCard === 'row' ? (
                     categories.length > 0 ? (
                         categories.map((el: category) => (
