@@ -5,6 +5,7 @@ import HomePage from './pages/home';
 import Food from './pages/food';
 import HomeStatr from './pages/home-statr';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Basket from './pages/basket';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/:restaurentId/food',
         element: <Food/>
+      },
+      {
+        path: '/:restaurentId/basket',
+        element: <Basket/>
       }
     ]
   }

@@ -1,3 +1,4 @@
+import { useCartStore } from "@/basketStore";
 import { Button } from "../ui/button";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
@@ -10,10 +11,17 @@ interface PropsFood {
 
 const RowCard = ({ food }: PropsFood) => {
   const { language } = useStore();
+  const addToCart = useCartStore((state) => state.addToCart);
   const [count, setCount] = useState(0);
 
   const handleIncrease = () => {
     setCount(count + 1);
+    addToCart({
+      _id: food._id,
+      name: food.name as { uz: string; en: string; ru: string },
+      price: food.price,
+      image: food.image
+    })
   };
 
   const handleDecrease = () => {

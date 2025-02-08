@@ -3,12 +3,13 @@ import HomeNav from "@/components/navbar/home-nav";
 import { useStore } from "@/store";
 import { category, Food, Restaurant } from "@/types";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { BiBasket } from "react-icons/bi";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const FoodPage = () => {
     const { viewCard, language } = useStore();
     const location = useLocation();
-
+    const {restaurentId} = useParams()    
     const restaurant: Restaurant | null = (() => {
         try {
             const data = localStorage.getItem('restaurant');
@@ -17,11 +18,10 @@ const FoodPage = () => {
             return null;
         }
     })();
-
+    const navigate = useNavigate()
     const categories = restaurant?.categories || [];
     const queryParams = new URLSearchParams(location.search);
-    const categoryId = queryParams.get("categoryId");
-
+    const categoryId = queryParams.get("categoryId");    
     useEffect(() => {
         if (categoryId) {
             const element = document.getElementById(categoryId);
@@ -33,7 +33,7 @@ const FoodPage = () => {
     }, [categoryId]);
 
     return (
-        <div className="max-w-md mx-auto border overflow-hidden lg:overflow-hidden">
+        <div className="max-w-md mx-auto border overflow-hidden lg:overflow-hidden relative">
             <HomeNav />
             <div className="p-2 w-full flex flex-col md:px-5 space-y-2 mt-[-20px] rounded-t-3xl bg-white">
                 {viewCard === 'row' ? (
@@ -59,6 +59,7 @@ const FoodPage = () => {
                     <p className="text-gray-500">Invalid view mode.</p>
                 )}
             </div>
+            <button onClick={() => navigate(`/${restaurentId}/basket`)} className="fixed bottom-10 right-5 bg-red-600 p-2 rounded-full text-white"><BiBasket size={35}/></button>
         </div>
     );
 };
