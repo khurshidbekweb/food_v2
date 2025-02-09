@@ -1,5 +1,8 @@
 {
     "menu":"Menye",
     "kategory": "Kategoriler",
-    "kategory_btn": "Tüm yemekler"
+    "kategory_btn": "Tüm yemekler",
+    "my_order":"Siparişim",
+    "total": "Toplam: "
+
 }

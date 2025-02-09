@@ -3,7 +3,6 @@ import { Button } from "../ui/button";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
 import { Food } from "@/types";
-import { useState } from "react";
 
 interface PropsFood {
   food: Food;
@@ -11,11 +10,11 @@ interface PropsFood {
 
 const RowCard = ({ food }: PropsFood) => {
   const { language } = useStore();
-  const addToCart = useCartStore((state) => state.addToCart);
-  const [count, setCount] = useState(0);
-
+  const {addToCart, increaseCount, decreaseCount, getCount,removeFromCart } = useCartStore()
+  const count = getCount(food._id);
+  
   const handleIncrease = () => {
-    setCount(count + 1);
+    increaseCount(food._id);
     addToCart({
       _id: food._id,
       name: food.name as { uz: string; en: string; ru: string },
@@ -23,13 +22,12 @@ const RowCard = ({ food }: PropsFood) => {
       image: food.image
     })
   };
-
-  const handleDecrease = () => {
-    if (count > 0) {
-      setCount(count - 1);
+  const decreaseCountRemove = () => {
+    if(count==1){
+      removeFromCart(food._id)
     }
-  };
-
+    decreaseCount(food._id)
+  }
   return (
     <div className="">
       <img
@@ -53,7 +51,7 @@ const RowCard = ({ food }: PropsFood) => {
               <Button
                 variant="outline"
                 className="bg-[#8833EE] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#8833EE]"
-                onClick={handleDecrease}
+                onClick={decreaseCountRemove}
               >
                 -
               </Button>

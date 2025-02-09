@@ -1,5 +1,7 @@
 {
     "menu":"Menu",
     "kategory": "Categories",
-    "kategory_btn": "All dishes"
+    "kategory_btn": "All dishes",
+    "my_order":"My order",
+    "total": "Total: "
 }

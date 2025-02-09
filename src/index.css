@@ -123,3 +123,6 @@ body::-webkit-scrollbar{
 .category-badge::-webkit-scrollbar{
   display: none;
 }
+.basket-page::-webkit-scrollbar{
+  display: none;
+}

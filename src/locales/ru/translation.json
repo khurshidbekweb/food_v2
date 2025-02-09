@@ -1,5 +1,8 @@
 {
     "menu":"Меню ",
     "kategory": "Категории",
-    "kategory_btn": "Все блюда"
+    "kategory_btn": "Все блюда",
+    "my_order":"Мой заказ",
+    "total": "Общий: "
+
 }

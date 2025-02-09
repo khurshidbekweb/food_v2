@@ -34,7 +34,7 @@ const FoodPage = () => {
 
     return (
         <div className="max-w-md mx-auto border overflow-hidden lg:overflow-hidden relative">
-            <HomeNav />
+            <HomeNav parents={true}/>
             <div className="p-2 w-full flex flex-col md:px-5 space-y-2 mt-[-20px] rounded-t-3xl bg-white">
                 {viewCard === 'row' ? (
                     categories.length > 0 ? (

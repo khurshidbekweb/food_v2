@@ -5,8 +5,8 @@ type Product = {
   _id: string;
   name: { uz: string; en: string; ru: string };
   price: number;
+  image: string;
   count: number;
-  image: string
 };
 
 type CartState = {
@@ -16,11 +16,12 @@ type CartState = {
   removeFromCart: (_id: string) => void;
   increaseCount: (_id: string) => void;
   decreaseCount: (_id: string) => void;
+  getCount: (_id: string) => number;
 };
 
 export const useCartStore = create<CartState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       items: [],
       totalPrice: 0,
       addToCart: (product) =>
@@ -59,17 +60,19 @@ export const useCartStore = create<CartState>()(
         }),
       decreaseCount: (_id) =>
         set((state) => {
-          const updatedItems = state.items.map((item) =>
-            item._id === _id && item.count > 1 ? { ...item, count: item.count - 1 } : item
-          );
+          const updatedItems = state.items
+            .map((item) => (item._id === _id && item.count > 1 ? { ...item, count: item.count - 1 } : item))
+            .filter((item) => item.count > 0);
           return {
             items: updatedItems,
             totalPrice: updatedItems.reduce((sum, item) => sum + item.price * item.count, 0),
           };
         }),
+      getCount: (_id) => {
+        const item = get().items.find((item) => item._id === _id);
+        return item ? item.count : 0;
+      },
     }),
-    {
-      name: "cart-storage", // LocalStorage'ga saqlanadigan kalit nomi
-    }
+    { name: "cart-storage" }
   )
 );

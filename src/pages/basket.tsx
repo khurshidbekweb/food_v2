@@ -1,7 +1,10 @@
 import { useCartStore } from "@/basketStore";
+import HomeNav from "@/components/navbar/home-nav";
 import { Button } from "@/components/ui/button";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
+import { MinusIcon, Plus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 type Product = {
     _id: string;
     name: { uz: string; en: string; ru: string };
@@ -12,47 +15,59 @@ type Product = {
 
 const Basket = () => {
     const { language } = useStore();
+    const {t} = useTranslation()
     const { items, totalPrice, increaseCount, decreaseCount, removeFromCart } = useCartStore();
     console.log(items);
-
+    const decreaseCountRemove = (count: number, _id: string) => {
+        if(count==1){
+            removeFromCart(_id)
+        }
+        decreaseCount(_id)
+    }
     return (
-        <div className="px-2">
+        <div className="basket-page max-w-md mx-auto border h-screen overflow-x-hidden relative ">
+            <HomeNav parents={true}/>
+            <div className="p-2 mt-[-20px] bg-white rounded-t-3xl">
+            <h2 className="text-[25px] font-medium py-2">{t('my_order')}</h2>
             {items?.length && items.map((el: Product) => (
-                <div className="flex justify-between items-start gap-x-2" key={el._id}>
+                <div className="mt-2 flex justify-between items-start gap-x-4" key={el._id}>
                     <img
                         src={`${IMG_BASE_URL}${el.image}`}
                         alt="food img"
-                        className="rounded-lg object-cover !w-[45%] h-[120px]"
+                        className="rounded-lg object-cover !w-[50%] h-[120px]"
                     />
-                    <div className="mt-2 flex-1">
-                        <h3 className="font-semibold text-xl text-gray-800">
+                    <div className="flex-1">
+                        <h3 className="font-semibold text-[22px] text-gray-800">
                             {el.name[language?.code as "uz" | "en" | "ru"]}
                         </h3>
-                        <div className="flex flex-col justify-between">
+                        <div className="flex flex-col justify-between space-y-2">
+                            <p className="text-gray-600 text-xl font-medium mt-1">
+                                {el.price.toLocaleString()} so'm
+                            </p>
                             <div className="flex items-center space-x-2">
                                 <Button
                                     variant="outline"
-                                    className="bg-[#8833EE] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#8833EE]"
-                                    onClick={() => decreaseCount(el._id)}
+                                    className="bg-[#8833EE] text-white rounded-full w-10 h-10 flex items-center justify-center border-[#8833EE]"
+                                    onClick={() => decreaseCountRemove(el.count, el._id)}
                                 >
-                                    -
+                                    <MinusIcon/>
                                 </Button>
                                 <span className="text-xl">{el.count}</span>
                                 <Button
                                     variant="outline"
-                                    className="bg-[#8833EE] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#8833EE] leading-none"
+                                    className="bg-[#8833EE] text-white text-3xl rounded-full w-10 h-10 flex items-center justify-center border-[#8833EE] leading-none"
                                     onClick={() => increaseCount(el._id)}
                                 >
-                                    +
+                                    <Plus/>
                                 </Button>
-                            </div>
-                            <p className="text-gray-600 text-3xl font-medium mt-2">
-                                {el.price.toLocaleString()} so'm
-                            </p>
+                            </div>                            
                         </div>
                     </div>
                 </div>
             ))}
+            <hr className="my-2"/>
+            <h2 className="text-[20px] font-medium">{t('total')} {totalPrice.toLocaleString()} so'm</h2>
+            </div>
         </div>
     );
 };
