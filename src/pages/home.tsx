@@ -37,16 +37,16 @@ const HomePage = () => {
 
   return (
     <div className="max-w-md mx-auto">
-      <HomeNav />
+      <HomeNav parents={false} navigation=""/>
       <div className="flex flex-col -mt-6 border-l border-r  max-w-md mx-auto my-auto bg-white rounded-tl-3xl rounded-tr-3xl">
       {/* Header */}
-        <div className="pt-4 pl-3 flex gap-[192px] items-center md:gap-[250px]">
+        <div className="pt-4 px-3 flex items-center justify-between">
           <h2 className="text-4xl">{restaurant?.name[language?.code]}</h2>
           <LanguageComponent />
         </div>
 
         {/* Online menu header */}
-        <div className="border-b p-4">
+        <div className="border-b p-3">
           <div className="flex items-center justify-between pb-4">
             <span className="text-white bg-[#8833EE] px-2 py-1 font-bold rounded-full">
               {t("kategory")}
@@ -64,12 +64,12 @@ const HomePage = () => {
             </Button>
           </div>
           {/* Menu categories */}
-          <div className="p-2 grid grid-cols-1 gap-4 ">
+          <div className="grid grid-cols-1 gap-4 ">
             {menuCategories?.map((category: category) => (
               <Button
                 key={category._id}
                 variant="ghost"
-                className="relative w-full h-[140px] rounded-3xl overflow-hidden p-0"
+                className="relative w-full !h-[140px] rounded-3xl overflow-hidden p-0"
                 onClick={() =>
                   navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)
                 }

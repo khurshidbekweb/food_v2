@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
 import { MinusIcon, Plus } from "lucide-react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 type Product = {
     _id: string;
     name: { uz: string; en: string; ru: string };
@@ -15,6 +17,7 @@ type Product = {
 
 const Basket = () => {
     const { language } = useStore();
+    const navigate = useNavigate()
     const {t} = useTranslation()
     const { items, totalPrice, increaseCount, decreaseCount, removeFromCart } = useCartStore();
     console.log(items);
@@ -24,9 +27,14 @@ const Basket = () => {
         }
         decreaseCount(_id)
     }
+    useEffect(() => {
+        if(items?.length===0){
+            navigate(-1)
+        }
+    }, [items?.length, navigate])
     return (
         <div className="basket-page max-w-md mx-auto border h-screen overflow-x-hidden relative ">
-            <HomeNav parents={true}/>
+            <HomeNav parents={true} navigation=" "/>
             <div className="p-2 mt-[-20px] bg-white rounded-t-3xl">
             <h2 className="text-[25px] font-medium py-2">{t('my_order')}</h2>
             {items?.length && items.map((el: Product) => (
@@ -66,7 +74,7 @@ const Basket = () => {
                 </div>
             ))}
             <hr className="my-2"/>
-            <h2 className="text-[20px] font-medium">{t('total')} {totalPrice.toLocaleString()} so'm</h2>
+            <h2 className="text-[25px] font-semibold mb-6">{t('total')} {totalPrice.toLocaleString()} so'm</h2>
             </div>
         </div>
     );
