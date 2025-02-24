@@ -63,7 +63,7 @@ const FoodPage = () => {
                     <p className="text-gray-500">Invalid view mode.</p>
                 )}
             </div>
-            {items?.length && <div onClick={() => navigate(`/${restaurentId}/basket`)} className="fixed flex justify-between items-center bottom-14 right-2">
+            {items?.length && <div onClick={() => navigate(`/${restaurentId}/basket`)} className="fixed flex justify-between items-center z-20 bottom-14 right-2">
                 <motion.button
                     className="relative bg-red-500 text-white p-4 rounded-full text-lg font-semibold shadow-lg"
                     whileHover={{ scale: 1.1 }}
