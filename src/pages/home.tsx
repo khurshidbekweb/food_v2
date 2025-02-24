@@ -38,7 +38,7 @@ const HomePage = () => {
   return (
     <div className="max-w-md mx-auto">
       <HomeNav parents={false} navigation=""/>
-      <div className="flex flex-col -mt-6 border-l border-r  max-w-md mx-auto my-auto bg-white rounded-tl-3xl rounded-tr-3xl">
+      <div className="flex flex-col -mt-[30px] border-l border-r  max-w-md mx-auto my-auto bg-white rounded-tl-3xl rounded-tr-3xl">
       {/* Header */}
         <div className="pt-4 px-3 flex items-center justify-between">
           <h2 className="text-4xl">{restaurant?.name[language?.code]}</h2>

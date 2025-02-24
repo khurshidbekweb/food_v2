@@ -37,7 +37,8 @@ export interface User{
     createdAt: string;
     updatedAt: string;
     __v: number;
-    categories: category[];
+    categories: category[];    
+  coverImage:string
   }
   export interface CategoryIMG {
     _id: string;

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const customAxios = axios.create({
     baseURL: BASE_URL_SERVER,
-    timeout: 1000
+    timeout: 10000
 });
 
 customAxios.defaults.headers.common[
