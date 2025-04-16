@@ -50,7 +50,7 @@ const RowCard = ({ food }: PropsFood) => {
             {count > 0 && (
               <Button
                 variant="outline"
-                className="bg-[#8833EE] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#8833EE]"
+                className="bg-[#24823e] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#24823e]"
                 onClick={decreaseCountRemove}
               >
                 -
@@ -59,7 +59,7 @@ const RowCard = ({ food }: PropsFood) => {
             {count > 0 && <span className="text-xl">{count}</span>}
             <Button
               variant="outline"
-              className="bg-[#8833EE] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#8833EE] leading-none"
+              className="bg-[#24823e] text-white text-3xl rounded-full w-12 h-12 pb-3 flex items-center justify-center border-[#24823e] leading-none"
               onClick={handleIncrease}
             >
               +

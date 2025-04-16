@@ -48,7 +48,7 @@ const HomePage = () => {
         {/* Online menu header */}
         <div className="border-b p-3">
           <div className="flex items-center justify-between pb-4">
-            <span className="text-white bg-[#8833EE] px-2 py-1 font-bold rounded-full">
+            <span className="text-white bg-[#24823e] px-2 py-1 font-bold rounded-full">
               {t("kategory")}
             </span>
             <Button
@@ -59,6 +59,7 @@ const HomePage = () => {
               }
               variant="outline"
               size="sm"
+              className="border border-[#24823e]"
             >
               {t("kategory_btn")}
             </Button>

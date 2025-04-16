@@ -55,7 +55,7 @@ const Basket = () => {
                             <div className="flex items-center space-x-2">
                                 <Button
                                     variant="outline"
-                                    className="bg-[#8833EE] text-white rounded-full w-10 h-10 flex items-center justify-center border-[#8833EE]"
+                                    className="bg-[#24823e] text-white rounded-full w-10 h-10 flex items-center justify-center border-[#24823e]"
                                     onClick={() => decreaseCountRemove(el.count, el._id)}
                                 >
                                     <MinusIcon/>
@@ -63,7 +63,7 @@ const Basket = () => {
                                 <span className="text-xl">{el.count}</span>
                                 <Button
                                     variant="outline"
-                                    className="bg-[#8833EE] text-white text-3xl rounded-full w-10 h-10 flex items-center justify-center border-[#8833EE] leading-none"
+                                    className="bg-[#24823e] text-white text-3xl rounded-full w-10 h-10 flex items-center justify-center border-[#24823e] leading-none"
                                     onClick={() => increaseCount(el._id)}
                                 >
                                     <Plus/>

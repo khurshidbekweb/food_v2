@@ -23,9 +23,9 @@ const HomeNav = ({ parents, navigation }: headerProps) => {
   console.log(restaurant);
 
   return (
-    <div className={`${restaurant?.coverImage ? '' : 'bg-gradient-to-r from-purple-500 top-0 to-pink-500 p-4 h-[160px]'} text-white`}>
+    <div className={`${restaurant?.coverImage ? '' : 'bg-gradient-to-r from-green-500 top-0 to-pink-500 p-4 h-[160px]'} text-white`}>
       <div className="pb-2 justify-between relative">
-        {parents && <button onClick={handleNavigate} className="absolute bg-inherit inline-block p-2 rounded-full hover:bg-[#8833EE] transition-colors z-10"><MoveLeft className="text-[15px]" size={24} /></button>}
+        {parents && <button onClick={handleNavigate} className="absolute bg-inherit inline-block p-2 rounded-full hover:bg-[#24823e] transition-colors z-10"><MoveLeft className="text-[15px]" size={24} /></button>}
         <div className="relative w-full h-full">
           <div className="rounded-full flex justify-center relative">
             <img

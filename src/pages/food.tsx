@@ -65,12 +65,12 @@ const FoodPage = () => {
             </div>
             {items?.length && <div onClick={() => navigate(`/${restaurentId}/basket`)} className="fixed flex justify-between items-center z-20 bottom-14 right-2">
                 <motion.button
-                    className="relative bg-red-500 text-white p-4 rounded-full text-lg font-semibold shadow-lg"
+                    className="relative bg-[#24823e] text-white p-4 rounded-full text-lg font-semibold shadow-lg"
                     whileHover={{ scale: 1.1 }}
                 >
                     <ShoppingCart size={30}/>
                     <motion.span
-                        className="absolute -z-10 w-full top-0 left-0 h-full rounded-full bg-red-400 opacity-30"
+                        className="absolute -z-10 w-full top-0 left-0 h-full rounded-full bg-[#24823e] opacity-30"
                         animate={{
                             scale: [1, 1.5, 1],
                             opacity: [0.5, 0, 0.5],
