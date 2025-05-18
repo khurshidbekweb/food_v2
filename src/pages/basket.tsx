@@ -37,6 +37,7 @@ const Basket = () => {
             <HomeNav parents={true} navigation=" "/>
             <div className="p-2 mt-[-20px] bg-white rounded-t-3xl">
             <h2 className="text-[25px] font-medium py-2">{t('my_order')}</h2>
+            
             {items?.length && items.map((el: Product) => (
                 <div className="mt-2 flex justify-between items-start gap-x-4" key={el._id}>
                     <img
