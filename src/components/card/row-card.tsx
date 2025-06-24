@@ -10,9 +10,9 @@ interface PropsFood {
 
 const RowCard = ({ food }: PropsFood) => {
   const { language } = useStore();
-  const {addToCart, increaseCount, decreaseCount, getCount,removeFromCart } = useCartStore()
+  const { addToCart, increaseCount, decreaseCount, getCount, removeFromCart } = useCartStore()
   const count = getCount(food._id);
-  
+
   const handleIncrease = () => {
     increaseCount(food._id);
     addToCart({
@@ -23,7 +23,7 @@ const RowCard = ({ food }: PropsFood) => {
     })
   };
   const decreaseCountRemove = () => {
-    if(count==1){
+    if (count == 1) {
       removeFromCart(food._id)
     }
     decreaseCount(food._id)
@@ -33,16 +33,16 @@ const RowCard = ({ food }: PropsFood) => {
       <img
         src={`${IMG_BASE_URL}${food.image}`}
         alt="food img"
-        className="rounded-lg object-cover w-full h-[300px]"
+        className="rounded-lg md:rounded-3xl object-cover w-full h-[300px]"
       />
 
       <div className="mt-2">
-        <h3 className="font-semibold text-xl text-gray-800">
+        <h3 className="font-semibold text-xl text-gray-800 md:text-3xl">
           {food.name[language?.code]}
         </h3>
         <div className="flex justify-between">
           <div>
-            <p className="text-gray-600 text-3xl font-medium mt-2">
+            <p className="text-gray-600 text-3xl font-medium mt-2 md:text-4xl">
               {food.price.toLocaleString()} so'm
             </p>
           </div>

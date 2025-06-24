@@ -36,8 +36,8 @@ const FoodPage = () => {
     }, [categoryId]);
 
     return (
-        <div className="max-w-md mx-auto border overflow-hidden lg:overflow-hidden relative">
-            <HomeNav parents={true} navigation={`/${restaurentId}`}/>
+        <div className="max-w-4xl mx-auto border overflow-hidden lg:overflow-hidden relative">
+            <HomeNav parents={true} navigation={`/${restaurentId}`} />
             <div className="p-2 w-full flex flex-col md:px-5 space-y-2 mt-[-20px] rounded-t-3xl bg-white">
                 {viewCard === 'row' ? (
                     categories.length > 0 ? (
@@ -68,7 +68,7 @@ const FoodPage = () => {
                     className="relative bg-[#24823e] text-white p-4 rounded-full text-lg font-semibold shadow-lg"
                     whileHover={{ scale: 1.1 }}
                 >
-                    <ShoppingCart size={30}/>
+                    <ShoppingCart size={30} />
                     <motion.span
                         className="absolute -z-10 w-full top-0 left-0 h-full rounded-full bg-[#24823e] opacity-30"
                         animate={{

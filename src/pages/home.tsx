@@ -36,12 +36,12 @@ const HomePage = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-4xl mx-auto">
       <HomeNav parents={false} navigation="" />
-      <div className="flex flex-col -mt-[30px] border-l border-r  max-w-md mx-auto my-auto bg-white rounded-tl-3xl rounded-tr-3xl">
+      <div className="flex flex-col -mt-[30px] border-l border-r  max-w-4xl mx-auto my-auto bg-white rounded-tl-3xl rounded-tr-3xl">
         {/* Header */}
         <div className="pt-4 px-3 flex items-center justify-between">
-          <h2 className="text-4xl">{restaurant?.name[language?.code]}</h2>
+          <h2 className="text-4xl md:text-5xl font-semibold">{restaurant?.name[language?.code]}</h2>
           <LanguageComponent />
         </div>
 
@@ -70,7 +70,7 @@ const HomePage = () => {
               <Button
                 key={category._id}
                 variant="ghost"
-                className="relative w-full !h-[140px] rounded-3xl overflow-hidden p-0"
+                className="relative w-full h-[140px] md:h-[200px] rounded-3xl overflow-hidden p-0"
                 onClick={() =>
                   navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)
                 }
@@ -82,7 +82,7 @@ const HomePage = () => {
                 />
                 <span className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></span>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <h1 className="text-white text-2xl font-bold">
+                  <h1 className="text-white text-2xl font-bold md:text-4xl shadow-lg">
                     {category.name[language?.code]}
                   </h1>
                 </div>

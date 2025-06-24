@@ -29,12 +29,12 @@ const HomeNav = ({ parents, navigation }: headerProps) => {
         <div className="relative w-full h-full">
           <div className="rounded-full flex justify-center relative">
             <img
-              className={`${restaurant?.coverImage ? 'absolute w-full h-full top-6' : ''} !w-[80px] !h-[80px] rounded-full object-cover`}
+              className={`${restaurant?.coverImage ? 'absolute w-full h-full top-6 md:top-10' : ''} w-[80px] h-[80px] md:w-[140px] md:h-[140px] rounded-full object-cover`}
               src={`${IMG_BASE_URL}${restaurant?.image}`}
               alt="restaurant img"
             />
             {restaurant?.coverImage && <div className="w-full h-full -z-10">
-              <img className="-z-10 w-full h-[160px]" src={`${IMG_BASE_URL}${restaurant?.coverImage}`} alt="cover image" />
+              <img className="-z-10 w-full h-[160px] md:h-[250px] object-cover" src={`${IMG_BASE_URL}${restaurant?.coverImage}`} alt="cover image" />
               <span className="absolute w-full h-full bg-[#37363634] top-0 left-0"></span>
             </div>}
           </div>
