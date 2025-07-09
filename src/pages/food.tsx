@@ -45,9 +45,9 @@ const FoodPage = () => {
                             <div key={el._id} className="flex flex-col space-y-2" id={el._id}>
                                 <hr className={`${i == 0 ? 'hidden' : 'block'} my-3`} />
                                 <div className="flex items-center  gap-x-2">
-                                    <h2 className="text-[32px]  font-bold">{el.name[language?.code]}</h2>
+                                    <h2 className="text-[32px]  font-bold">{el?.name[language?.code]}</h2>
                                 </div>
-                                {el.foods.length > 0 ? (
+                                {el?.foods?.length > 0 ? (
                                     el.foods.map((food: Food) => (
                                         <RowCard key={food._id} food={food} />
                                     ))

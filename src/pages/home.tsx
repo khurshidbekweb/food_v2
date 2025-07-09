@@ -83,7 +83,7 @@ const HomePage = () => {
                 <span className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></span>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h1 className="text-white text-2xl font-bold md:text-4xl shadow-lg">
-                    {category.name[language?.code]}
+                    {category?.name[language?.code]}
                   </h1>
                 </div>
               </Button>

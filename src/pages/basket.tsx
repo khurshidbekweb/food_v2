@@ -47,11 +47,11 @@ const Basket = () => {
                         />
                         <div className="flex-1">
                             <h3 className="font-semibold text-[22px] text-gray-800 md:text-3xl">
-                                {el.name[language?.code as "uz" | "en" | "ru"]}
+                                {el?.name[language?.code as "uz" | "en" | "ru"]}
                             </h3>
                             <div className="flex flex-col justify-between space-y-2">
                                 <p className="text-gray-600 text-xl font-medium mt-1 md:text-2xl">
-                                    {el.price.toLocaleString()} so'm
+                                    {el?.price.toLocaleString()} so'm
                                 </p>
                                 <div className="flex items-center space-x-4 mt-5">
                                     <Button

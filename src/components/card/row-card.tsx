@@ -17,9 +17,9 @@ const RowCard = ({ food }: PropsFood) => {
     increaseCount(food._id);
     addToCart({
       _id: food._id,
-      name: food.name as { uz: string; en: string; ru: string },
-      price: food.price,
-      image: food.image
+      name: food?.name as { uz: string; en: string; ru: string },
+      price: food?.price,
+      image: food?.image
     })
   };
   const decreaseCountRemove = () => {
@@ -38,12 +38,12 @@ const RowCard = ({ food }: PropsFood) => {
 
       <div className="mt-2">
         <h3 className="font-semibold text-xl text-gray-800 md:text-3xl">
-          {food.name[language?.code]}
+          {food?.name[language?.code]}
         </h3>
         <div className="flex justify-between">
           <div>
             <p className="text-gray-600 text-3xl font-medium mt-2 md:text-4xl">
-              {food.price.toLocaleString()} so'm
+              {food?.price.toLocaleString()} so'm
             </p>
           </div>
           <div className="flex items-center space-x-2">
