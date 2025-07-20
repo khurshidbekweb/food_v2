@@ -41,27 +41,27 @@ const Basket = () => {
                 {items?.length && items.map((el: Product) => (
                     <div className="mt-2 flex justify-between items-start gap-x-4 w-full" key={el._id}>
                         <img
-                            src={`${IMG_BASE_URL}${el.image}`}
+                            src={`${IMG_BASE_URL}${el?.image}`}
                             alt="food img"
                             className="rounded-lg w-[50%] h-[120px] md:h-[200px] object-cover"
                         />
                         <div className="flex-1">
                             <h3 className="font-semibold text-[22px] text-gray-800 md:text-3xl">
-                                {el?.name[language?.code as "uz" | "en" | "ru"]}
+                                {el?.name?.[language?.code as "uz" | "en" | "ru"]}
                             </h3>
                             <div className="flex flex-col justify-between space-y-2">
                                 <p className="text-gray-600 text-xl font-medium mt-1 md:text-2xl">
-                                    {el?.price.toLocaleString()} so'm
+                                    {el?.price?.toLocaleString()} so'm
                                 </p>
                                 <div className="flex items-center space-x-4 mt-5">
                                     <Button
                                         variant="outline"
                                         className="bg-[#24823e] text-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-[#24823e]"
-                                        onClick={() => decreaseCountRemove(el.count, el._id)}
+                                        onClick={() => decreaseCountRemove(el?.count, el._id)}
                                     >
                                         <MinusIcon />
                                     </Button>
-                                    <span className="text-xl md:text-4xl font-semibold">{el.count}</span>
+                                    <span className="text-xl md:text-4xl font-semibold">{el?.count}</span>
                                     <Button
                                         variant="outline"
                                         className="bg-[#24823e] text-white text-3xl rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center border-[#24823e] leading-none"

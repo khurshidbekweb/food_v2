@@ -41,7 +41,7 @@ const HomePage = () => {
       <div className="flex flex-col -mt-[30px] border-l border-r  max-w-4xl mx-auto my-auto bg-white rounded-tl-3xl rounded-tr-3xl">
         {/* Header */}
         <div className="pt-4 px-3 flex items-center justify-between">
-          <h2 className="text-4xl md:text-5xl font-semibold">{restaurant?.name[language?.code]}</h2>
+          <h2 className="text-4xl md:text-5xl font-semibold">{restaurant?.name?.[language?.code]}</h2>
           <LanguageComponent />
         </div>
 
@@ -54,7 +54,7 @@ const HomePage = () => {
             <Button
               onClick={() =>
                 navigate(
-                  `/${restaurant?._id}/food?categoryId=${restaurant?.categories[0]?._id}`
+                  `/${restaurant?._id}/food?categoryId=${restaurant?.categories?.[0]?._id}`
                 )
               }
               variant="outline"
@@ -72,18 +72,18 @@ const HomePage = () => {
                 variant="ghost"
                 className="relative w-full h-[140px] md:h-[200px] rounded-3xl overflow-hidden p-0"
                 onClick={() =>
-                  navigate(`/${restaurant?._id}/food?categoryId=${category._id}`)
+                  navigate(`/${restaurant?._id}/food?categoryId=${category?._id}`)
                 }
               >
                 <img
                   className="w-full h-full object-cover"
-                  src={`${IMG_BASE_URL}${category.image}`}
+                  src={`${IMG_BASE_URL}${category?.image}`}
                   alt=""
                 />
                 <span className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></span>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h1 className="text-white text-2xl font-bold md:text-4xl shadow-lg">
-                    {category?.name[language?.code]}
+                    {category?.name?.[language?.code]}
                   </h1>
                 </div>
               </Button>

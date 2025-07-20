@@ -31,7 +31,7 @@ const LanguageComponent = () => {
             <DropdownMenuTrigger><img className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-full" src={`${IMG_BASE_URL}${language?.image}`} alt="" /></DropdownMenuTrigger>
             <DropdownMenuContent>
                 {languages?.length && languages.map((lang) => (
-                    <DropdownMenuItem className="cursor-pointer" key={lang._id} onClick={() => handelChangeLanguage(lang)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${lang.image}`} alt="language image" /> {lang.name}</DropdownMenuItem>
+                    <DropdownMenuItem className="cursor-pointer" key={lang._id} onClick={() => handelChangeLanguage(lang)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${lang?.image}`} alt="language image" /> {lang?.name}</DropdownMenuItem>
                 ))}
             </DropdownMenuContent>
         </DropdownMenu>

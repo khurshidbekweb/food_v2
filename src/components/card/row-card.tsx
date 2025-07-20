@@ -31,19 +31,19 @@ const RowCard = ({ food }: PropsFood) => {
   return (
     <div className="">
       <img
-        src={`${IMG_BASE_URL}${food.image}`}
+        src={`${IMG_BASE_URL}${food?.image}`}
         alt="food img"
         className="rounded-lg md:rounded-3xl object-cover w-full h-[300px]"
       />
 
       <div className="mt-2">
         <h3 className="font-semibold text-xl text-gray-800 md:text-3xl">
-          {food?.name[language?.code]}
+          {food?.name?.[language?.code]}
         </h3>
         <div className="flex justify-between">
           <div>
             <p className="text-gray-600 text-3xl font-medium mt-2 md:text-4xl">
-              {food?.price.toLocaleString()} so'm
+              {food?.price?.toLocaleString()} so'm
             </p>
           </div>
           <div className="flex items-center space-x-2">
