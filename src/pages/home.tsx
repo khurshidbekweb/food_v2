@@ -72,7 +72,7 @@ const HomePage = () => {
                 variant="ghost"
                 className="relative w-full h-[140px] md:h-[200px] rounded-3xl overflow-hidden p-0"
                 onClick={() =>
-                  navigate(`/${restaurant?._id}/food?categoryId=${category?._id}`)
+                  navigate(`/${restaurant?._id}/${category?._id}`)
                 }
               >
                 <img

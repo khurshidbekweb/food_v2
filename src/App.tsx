@@ -6,6 +6,7 @@ import Food from './pages/food';
 import HomeStatr from './pages/home-statr';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Basket from './pages/basket';
+import CategoryFood from './pages/category-food';
 
 const router = createBrowserRouter([
   {
@@ -14,19 +15,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomeStatr/>
+        element: <HomeStatr />
       },
       {
         path: '/:restaurentId',
-        element: <HomePage/>
+        element: <HomePage />
       },
       {
         path: '/:restaurentId/food',
-        element: <Food/>
+        element: <Food />
+      },
+      {
+        path: '/:restaurentId/:id',
+        element: <CategoryFood />
       },
       {
         path: '/:restaurentId/basket',
-        element: <Basket/>
+        element: <Basket />
       }
     ]
   }
@@ -39,7 +44,7 @@ const App = () => {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />  
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </div>
   );

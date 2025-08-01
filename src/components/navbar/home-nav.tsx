@@ -20,7 +20,6 @@ const HomeNav = ({ parents, navigation }: headerProps) => {
       navigate(`/${restaurentId}`)
     }
   }
-  console.log(restaurant);
 
   return (
     <div className={`${restaurant?.coverImage ? '' : 'bg-gradient-to-r from-green-500 top-0 to-pink-500 p-4 h-[160px]'} text-white`}>
