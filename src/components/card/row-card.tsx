@@ -3,6 +3,9 @@ import { Button } from "../ui/button";
 import { IMG_BASE_URL } from "@/constants";
 import { useStore } from "@/store";
 import { Food } from "@/types";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useState } from "react";
+import { ChevronUp } from "lucide-react";
 
 interface PropsFood {
   food: Food;
@@ -12,7 +15,7 @@ const RowCard = ({ food }: PropsFood) => {
   const { language } = useStore();
   const { addToCart, increaseCount, decreaseCount, getCount, removeFromCart } = useCartStore()
   const count = getCount(food._id);
-
+  const [expanded, setExpanded] = useState(false);
   const handleIncrease = () => {
     increaseCount(food._id);
     addToCart({
@@ -30,16 +33,37 @@ const RowCard = ({ food }: PropsFood) => {
   }
   return (
     <div className="">
-      <img
+      <LazyLoadImage
         src={`${IMG_BASE_URL}${food?.image}`}
+        placeholderSrc="lowres.webp"
+        effect="blur"
         alt="food img"
-        className="rounded-lg md:rounded-3xl object-cover w-full h-[300px]"
+        wrapperClassName="w-full h-[300px] rounded-lg md:rounded-3xl overflow-hidden"
+        className="w-full h-full object-cover"
       />
 
       <div className="mt-2">
         <h3 className="font-semibold text-xl text-gray-800 md:text-3xl">
           {food?.name?.[language?.code]}
         </h3>
+        <div className="mt-2 flex items-end">
+          <p
+            onClick={() => setExpanded(!expanded)}
+            className={`${expanded ? "line-clamp-none" : "line-clamp-1"
+              } text-gray-700`}
+          >
+            {food?.description?.[language?.code] || "Ma'lumot mavjud emas"}
+          </p>
+
+          {food?.description?.[language?.code] && food?.description?.[language?.code].length > 30 && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-blue-500 text-sm mt-1"
+            >
+              {expanded && <ChevronUp />}
+            </button>
+          )}
+        </div>
         <div className="flex justify-between">
           <div>
             <p className="text-gray-600 text-3xl font-medium mt-2 md:text-4xl">

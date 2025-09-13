@@ -7,7 +7,7 @@ import HomeStatr from './pages/home-statr';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Basket from './pages/basket';
 import CategoryFood from './pages/category-food';
-
+import 'react-lazy-load-image-component/src/effects/blur.css';
 const router = createBrowserRouter([
   {
     path: '/',

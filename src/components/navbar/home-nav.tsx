@@ -3,7 +3,7 @@ import { IMG_BASE_URL } from "@/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRestuarantOne } from "@/querys";
 import { MoveLeft } from "lucide-react";
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 interface headerProps {
   parents: boolean;
   navigation: string
@@ -27,16 +27,27 @@ const HomeNav = ({ parents, navigation }: headerProps) => {
         {parents && <button onClick={handleNavigate} className="absolute bg-inherit inline-block p-2 rounded-full hover:bg-[#24823e] transition-colors z-10"><MoveLeft className="text-[15px]" size={24} /></button>}
         <div className="relative w-full h-full">
           <div className="rounded-full flex justify-center relative">
-            <img
-              className={`
+            <LazyLoadImage
+              placeholderSrc="lowres.webp"
+              effect="blur"
+
+              wrapperClassName={`
     ${restaurant?.coverImage ? 'absolute top-6 md:top-10 w-[80px] h-[80px] md:w-[140px] md:h-[140px] ' : ''} 
-    rounded-full object-cover
-  `}
+    rounded-full object-cover    
+  `
+              }
+              className="w-full h-full object-cover"
               src={`${IMG_BASE_URL}${restaurant?.image}`}
               alt="restaurant img"
             />
             {restaurant?.coverImage && <div className="w-full h-full -z-10">
-              <img className="-z-10 w-full h-[160px] md:h-[250px] object-cover" src={`${IMG_BASE_URL}${restaurant?.coverImage}`} alt="cover image" />
+              <LazyLoadImage
+                src={`${IMG_BASE_URL}${restaurant?.coverImage}`}
+                placeholderSrc="lowres.webp"
+                effect="blur"
+                wrapperClassName="-z-10 w-full h-[160px] md:h-[250px] object-cover"
+                className="w-full h-full object-cover"
+                alt="cover image" />
               <span className="absolute w-full h-full bg-[#37363634] top-0 left-0"></span>
             </div>}
           </div>

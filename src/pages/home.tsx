@@ -9,6 +9,7 @@ import { category } from "@/types";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const HomePage = () => {
   const { restaurentId } = useParams();
@@ -20,7 +21,6 @@ const HomePage = () => {
     isLoading,
   } = useRestuarantOne(restaurentId!);
   const { data: menuCategories } = useCategoryAll(restaurentId!);
-
   const navigate = useNavigate();
   useEffect(() => {
     if (restaurant) {
@@ -75,7 +75,10 @@ const HomePage = () => {
                   navigate(`/${restaurant?._id}/${category?._id}`)
                 }
               >
-                <img
+                <LazyLoadImage
+                  placeholderSrc="lowres.webp"
+                  effect="blur"
+                  wrapperClassName="w-full h-full object-cover"
                   className="w-full h-full object-cover"
                   src={`${IMG_BASE_URL}${category?.image}`}
                   alt=""

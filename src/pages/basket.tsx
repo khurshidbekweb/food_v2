@@ -6,6 +6,7 @@ import { useStore } from "@/store";
 import { MinusIcon, Plus } from "lucide-react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 type Product = {
     _id: string;
@@ -40,10 +41,13 @@ const Basket = () => {
 
                 {items?.length && items.map((el: Product) => (
                     <div className="mt-2 flex justify-between items-start gap-x-4 w-full" key={el._id}>
-                        <img
+                        <LazyLoadImage
                             src={`${IMG_BASE_URL}${el?.image}`}
+                            placeholderSrc="lowres.webp"
+                            effect="blur"
                             alt="food img"
-                            className="rounded-lg w-[50%] h-[120px] md:h-[200px] object-cover"
+                            wrapperClassName="rounded-lg w-[50%] h-[120px] md:h-[200px] object-cover"
+                            className="w-full h-full object-cover"
                         />
                         <div className="flex-1">
                             <h3 className="font-semibold text-[22px] text-gray-800 md:text-3xl">

@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useRestuarantOne } from "@/querys";
 import { useEffect } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const LanguageComponent = () => {
     const { restaurentId } = useParams()
@@ -28,7 +29,7 @@ const LanguageComponent = () => {
     }
     return (
         <DropdownMenu >
-            <DropdownMenuTrigger><img className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-full" src={`${IMG_BASE_URL}${language?.image}`} alt="" /></DropdownMenuTrigger>
+            <DropdownMenuTrigger><LazyLoadImage className="w-[30px] h-[30px] md:w-[50px] md:h-[50px] rounded-full" src={`${IMG_BASE_URL}${language?.image}`} alt="" /></DropdownMenuTrigger>
             <DropdownMenuContent>
                 {languages?.length && languages.map((lang) => (
                     <DropdownMenuItem className="cursor-pointer" key={lang._id} onClick={() => handelChangeLanguage(lang)}><img className="w-[30px] h-[30px] rounded-full" src={`${IMG_BASE_URL}${lang?.image}`} alt="language image" /> {lang?.name}</DropdownMenuItem>

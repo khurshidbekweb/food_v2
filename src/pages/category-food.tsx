@@ -23,6 +23,11 @@ const CategoryFood = () => {
     const category = restaurant?.categories.find(el => el._id === id) as category
     const { items } = useCartStore()
 
+    const handleMale = (id: string) => {
+        navigate(`/${id}/basket`)
+        window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+
     return (
         <div className="max-w-4xl mx-auto overflow-hidden lg:overflow-hidden relative">
             <HomeNav parents={true} navigation={`/${restaurentId}`} />
@@ -40,7 +45,7 @@ const CategoryFood = () => {
                         <p className="text-gray-500">No foods available in this category.</p>
                     )}
                 </div>}
-                {items?.length && <div onClick={() => navigate(`/${restaurentId}/basket`)} className="fixed flex justify-between items-center z-20 bottom-14 right-2">
+                {items?.length > 0 && <div onClick={() => handleMale(restaurentId as string)} className="fixed flex justify-between items-center z-20 bottom-14 right-2">
                     <motion.button
                         className="relative bg-[#24823e] text-white p-4 rounded-full text-lg font-semibold shadow-lg"
                         whileHover={{ scale: 1.1 }}
